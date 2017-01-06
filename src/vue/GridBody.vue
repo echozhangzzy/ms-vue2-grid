@@ -8,7 +8,7 @@ Time: 16:42-->
   <div style="width:100%;">
     <table style="width:100%;">
       <tbody>
-        <tr v-for="record in dataSource">
+        <tr v-for="record in data">
           <td v-for="column in columns">{{record[column.dataIndex]}}</td>
         </tr>
       </tbody>
@@ -16,6 +16,7 @@ Time: 16:42-->
   </div>
 </template>
 <script>
+  import Utils from '../utils/index.js';
     export default {
       props:{
         columns:{
@@ -29,6 +30,12 @@ Time: 16:42-->
           default:function(){
             return [];
           }
+        }
+      },
+      computed:{
+        data:function() {
+          let me = this;
+          return Utils.MSDataTransfer.treeToArray(me.dataSource);
         }
       },
       components: {
