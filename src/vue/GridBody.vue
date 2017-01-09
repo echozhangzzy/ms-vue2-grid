@@ -8,15 +8,20 @@ Time: 16:42-->
   <div style="width:100%;">
     <table style="width:100%;">
       <tbody>
-        <tr v-for="record in data">
-          <td v-for="column in columns">{{record[column.dataIndex]}}</td>
+        <tr v-for="(record,trIndex) in dataSource"
+                is="grid-tr"
+                :columns="columns"
+                :record="record" :index="trIndex" v-on:toggle="toggle" v-on:row-show="rowShow">
+
         </tr>
       </tbody>
     </table>
   </div>
 </template>
 <script>
+  import Vue from "vue";
   import Utils from '../utils/index.js';
+  import GridTr from "./GridTr.vue";
     export default {
       props:{
         columns:{
@@ -33,12 +38,22 @@ Time: 16:42-->
         }
       },
       computed:{
-        data:function() {
+
+      },
+      methods:{
+        toggle:function(trIndex){
           let me = this;
-          return Utils.MSDataTransfer.treeToArray(me.dataSource);
+          alert(trIndex);
+          let record = me.dataSource[trIndex];
+          record._expanded = !record._expanded;
+        },
+        rowShow:function(trIndex,show){
+          let me = this;
+          Vue.set(me.dataSource[trIndex],'_show',show);
         }
       },
       components: {
+        GridTr
       }
     }
 </script>

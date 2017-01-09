@@ -39,7 +39,13 @@ Time: 15:07-->
               children:[
                 {
                   name:'D',
-                  age:34
+                  age:34,
+                  children:[
+                    {
+                      name:'E',
+                      age: 50
+                    }
+                  ]
                 }
               ]
             },

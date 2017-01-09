@@ -7,10 +7,11 @@ Time: 15:57-->
 <template>
 <div>
   <grid-head :columns="columns" />
-  <grid-body :columns="columns" :data-source="dataSource" />
+  <grid-body :columns="columns" :data-source="data" />
 </div>
 </template>
 <script>
+    import Utils from '../utils/index.js';
     import GridHead from "./GridHead.vue";
     import GridBody from "./GridBody.vue";
     export default {
@@ -27,6 +28,12 @@ Time: 15:57-->
           default:function(){
             return [];
           }
+        }
+      },
+      computed:{
+        data:function() {
+          let me = this;
+          return Utils.MSDataTransfer.treeToArray(me.dataSource);
         }
       },
       components: {
