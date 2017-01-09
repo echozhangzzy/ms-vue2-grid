@@ -6,12 +6,15 @@ Date: 2017/1/5
 Time: 16:42-->
 <template>
   <div style="width:100%;">
-    <table style="width:100%;">
+    <table style="width:100%;" class="table table-bordered">
       <tbody>
         <tr v-for="(record,trIndex) in dataSource"
-                is="grid-tr"
-                :columns="columns"
-                :record="record" :index="trIndex" v-on:toggle="toggle" v-on:row-show="rowShow">
+            is="grid-tr"
+            :columns="columns"
+            :record="record"
+            :index="trIndex"
+            v-on:toggle="toggle"
+            v-on:row-show="rowShow">
 
         </tr>
       </tbody>
@@ -43,7 +46,6 @@ Time: 16:42-->
       methods:{
         toggle:function(trIndex){
           let me = this;
-          alert(trIndex);
           let record = me.dataSource[trIndex];
           record._expanded = !record._expanded;
         },

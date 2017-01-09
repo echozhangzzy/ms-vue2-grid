@@ -6,7 +6,7 @@
  * Time: 14:48
  */
 'use strict';
-
+import "bootstrap/dist/css/bootstrap.css"
 import "../../src/scss/style.scss";
 import Vue from "vue";
 import VueRouter from 'vue-router';

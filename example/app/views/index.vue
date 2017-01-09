@@ -15,18 +15,19 @@ Time: 15:07-->
       data(){
         return {
           columns:[
-          {
-             title:'测试',
-             dataIndex:'name'
-          },
-          {
-             title:'测试2',
-             dataIndex:'age'
-          },
-          {
-             title:'测试3',
-             dataIndex:'age'
-          }
+            {
+               title:'测试',
+               dataIndex:'name'
+            },
+            {
+               title:'测试2',
+               dataIndex:'age'
+            },
+            {
+               title:'测试3',
+               dataIndex:'age',
+               width:100
+            }
           ],
           dataSource:[
             {
