@@ -8,7 +8,10 @@ Time: 13:02-->
   <tr v-show="show">
     <td v-for="(column,tdIndex) in columns" key="tdIndex" :width="column.width">
       <span v-if="tdIndex==0" v-for="space in spaces" class="ms-space"></span>
-      <button v-if="tdIndex==0 && record.children && record.children.length>0" @click="toggle">+</button>
+      <button v-if="tdIndex==0 && record.children && record.children.length>0" @click="toggle">
+        <span v-if="!record._expanded">+</span>
+        <span v-if="record._expanded">-</span>
+      </button>
       {{record[column.dataIndex]}}
     </td>
   </tr>
