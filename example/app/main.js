@@ -6,6 +6,8 @@
  * Time: 14:48
  */
 'use strict';
+
+import "../../src/scss/style.scss";
 import Vue from "vue";
 import VueRouter from 'vue-router';
 

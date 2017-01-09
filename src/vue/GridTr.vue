@@ -7,6 +7,7 @@ Time: 13:02-->
 <template>
   <tr v-show="show">
     <td v-for="(column,tdIndex) in columns">
+      <span v-if="tdIndex==0" v-for="space in spaces" class="ms-space"></span>
       <button v-if="tdIndex==0" @click="toggle">+</button>
       {{record[column.dataIndex]}}
     <td>
@@ -38,6 +39,15 @@ Time: 13:02-->
           let show = (record._parent?(record._parent._expanded && record._parent._show):true);
           me.$emit('row-show',me.index,show);
           return show;
+        },
+        spaces:function(){
+          let me = this;
+          let record = me.record;
+          let spaces = [];
+          for(var i=0;i<record._level;i++){
+            spaces.push(i);
+          }
+          return spaces;
         }
       },
       methods:{

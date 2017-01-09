@@ -1,5 +1,5 @@
 {
-  "name": "vue2",
+  "name": "ms-vue2-tree-grid",
   "version": "1.0.0",
   "description": "",
   "main": "start.js",
@@ -9,7 +9,6 @@
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-3": "^6.17.0",
-    "clean-webpack-plugin": "^0.1.14",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
@@ -17,20 +16,25 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "node-args": "^1.0.2",
-    "sass": "^0.5.0",
     "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.7",
     "vue": "^2.1.4",
     "vue-hot-reload-api": "^2.0.6",
     "vue-html-loader": "^1.2.3",
     "vue-loader": "^10.0.2",
-    "vue-router": "^2.1.1",
     "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.1.4",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "vue-template-compiler": "^2.1.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "node-sass": "^4.2.0",
+    "sass": "^0.5.0",
+    "vue-router": "^2.1.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2",
+    "clean-webpack-plugin": "^0.1.14"
+  },
   "scripts": {
     "start": "babel-node start.js",
     "build": "webpack  --watch --progres",

@@ -10,23 +10,27 @@ import Vue from "vue";
 import _ from "lodash";
 function DataTransfer(data) {
     if(!this instanceof DataTransfer){
-        return new DataTransfer(data,null);
+        return new DataTransfer(data,null,null);
     }
 }
 
-DataTransfer.treeToArray = function(data,parent) {
+DataTransfer.treeToArray = function(data,parent,level) {
     let tmp = [];
     _.forEach(data,function(record) {
-        if(record.expanded == undefined){
-           // record = Object.assign({},record,{"expanded":false});
+        if(record._expanded == undefined){
             Vue.set(record,'_expanded',false);
         }
         if(parent){
             Vue.set(record,'_parent',parent);
         }
+        let _level = 0;
+        if(level!=undefined && level!=null){
+            _level = level+1;
+        }
+        Vue.set(record,'_level',_level);
         tmp.push(record);
         if(record.children && record.children.length>0 ){
-            let children = DataTransfer.treeToArray(record.children,record);
+            let children = DataTransfer.treeToArray(record.children,record,_level);
             tmp = _.concat(tmp,children);
         }
     });
