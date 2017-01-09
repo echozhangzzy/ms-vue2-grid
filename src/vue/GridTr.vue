@@ -7,7 +7,7 @@ Time: 13:02-->
 <template>
   <tr v-show="show">
     <td v-for="(column,tdIndex) in columns" key="tdIndex" :width="column.width">
-      <span v-if="tdIndex==0" v-for="space in spaces" class="ms-space"></span>
+      <span v-if="tdIndex==0" v-for="space in record._level" class="ms-space"></span>
       <button v-if="tdIndex==0 && record.children && record.children.length>0" @click="toggle">
         <span v-if="!record._expanded">+</span>
         <span v-if="record._expanded">-</span>
