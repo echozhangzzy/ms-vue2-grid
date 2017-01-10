@@ -7,8 +7,8 @@ Time: 13:02-->
 <template>
   <tr v-show="show">
     <td v-for="(column,tdIndex) in columns" key="tdIndex" :width="column.width">
-      <span v-if="tdIndex==0" v-for="space in record._level" class="ms-space"></span>
-      <button v-if="tdIndex==0 && record.children && record.children.length>0" @click="toggle">
+      <span v-if="spaceIconShow(tdIndex)" v-for="space in record._level" class="ms-space"></span>
+      <button v-if="toggleIconShow(tdIndex,record)" @click="toggle">
         <span v-if="!record._expanded">+</span>
         <span v-if="record._expanded">-</span>
       </button>
@@ -21,6 +21,12 @@ Time: 13:02-->
       props:{
         index:{
           type:Number
+        },
+        treeStructure:{
+          type:Boolean,
+          default:function() {
+            return false;
+          }
         },
         columns:{
           type:Array,
@@ -54,9 +60,22 @@ Time: 13:02-->
         }
       },
       methods:{
+        spaceIconShow:function(index){
+          let me = this;
+          if(me.treeStructure && index==0){
+            return true;
+          }
+          return false;
+        },
+        toggleIconShow:function(index,record) {
+          let me = this;
+          if(me.treeStructure && index==0 && record.children && record.children.length>0){
+            return true;
+          }
+          return false;
+        },
         toggle: function() {
           let me = this;
-          console.log(me.columns);
           me.$emit('toggle',me.index);
         }
       },

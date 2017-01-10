@@ -10,12 +10,12 @@ Time: 16:42-->
       <tbody>
         <tr v-for="(record,trIndex) in dataSource"
             is="grid-tr"
+            :tree-structure="treeStructure"
             :columns="columns"
             :record="record"
             :index="trIndex"
             v-on:toggle="toggle"
             v-on:row-show="rowShow">
-
         </tr>
       </tbody>
     </table>
@@ -27,6 +27,12 @@ Time: 16:42-->
   import GridTr from "./GridTr.vue";
     export default {
       props:{
+        treeStructure:{
+          type:Boolean,
+          default:function() {
+            return false;
+          }
+        },
         columns:{
           type:Array,
           default:function(){
@@ -38,6 +44,12 @@ Time: 16:42-->
           default:function(){
             return [];
           }
+        },
+        flexCount:{
+          type:Number
+        },
+        restWidth:{
+          type:Number
         }
       },
       computed:{

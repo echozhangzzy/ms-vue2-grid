@@ -5,8 +5,8 @@ User: Bane.Shi
 Date: 2016/12/6
 Time: 15:07-->
 <template>
-  <div >
-    <grid-panel :columns="columns" :data-source="dataSource"/>
+  <div style="width:1000px;">
+    <grid-panel :columns="columns" :tree-structure=false :data-source="dataSource"/>
   </div>
 </template>
 <script>
@@ -16,15 +16,17 @@ Time: 15:07-->
         return {
           columns:[
             {
-               title:'测试',
-               dataIndex:'name'
+               text:'测试',
+               dataIndex:'name',
+               flex:1
             },
             {
-               title:'测试2',
-               dataIndex:'age'
+               text:'测试2',
+               dataIndex:'age',
+               flex:2
             },
             {
-               title:'测试3',
+               text:'测试3',
                dataIndex:'age',
                width:100
             }
