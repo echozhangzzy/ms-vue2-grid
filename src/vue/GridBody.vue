@@ -13,7 +13,9 @@ Time: 16:42-->
             :tree-structure="treeStructure"
             :columns="columns"
             :record="record"
-            :index="trIndex"
+            :record-index="trIndex"
+            :flex-count="flexCount"
+            :rest-width="restWidth"
             v-on:toggle="toggle"
             v-on:row-show="rowShow">
         </tr>
@@ -24,33 +26,12 @@ Time: 16:42-->
 <script>
   import Vue from "vue";
   import Utils from '../utils/index.js';
+  import BaseMixin from "../mixins/BaseMixin";
   import GridTr from "./GridTr.vue";
     export default {
+      mixins:[BaseMixin],
       props:{
-        treeStructure:{
-          type:Boolean,
-          default:function() {
-            return false;
-          }
-        },
-        columns:{
-          type:Array,
-          default:function(){
-            return [];
-          }
-        },
-        dataSource:{
-          type:Array,
-          default:function(){
-            return [];
-          }
-        },
-        flexCount:{
-          type:Number
-        },
-        restWidth:{
-          type:Number
-        }
+
       },
       computed:{
 

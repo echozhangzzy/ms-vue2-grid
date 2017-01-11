@@ -6,7 +6,7 @@ Date: 2017/1/10
 Time: 15:25-->
 <template>
   <div class="ms-grid-head-item" :style="customStyle">
-    <div>{{column.text}}</div>
+    <div class="ms-grid-head-item-inner">{{column.text}}</div>
   </div>
 </template>
 <script>
@@ -26,12 +26,15 @@ Time: 15:25-->
         customStyle:function(){
           let me = this;
           let style = {};
+          let minWidth = 80;
+          let width = minWidth;
           if(me.column.width){
-            Object.assign(style,{width:me.column.width+'px'});
+            minWidth = (me.column.width>minWidth)?me.column.width:minWidth;
           }else {
-            let width = (me.column)*me.restWidth;
-            Object.assign(style,{width: +'px'});
+            width = (me.column.flex/me.flexCount)*me.restWidth;
+            width = (width>minWidth)?width:minWidth;
           }
+          Object.assign(style,{width: width +'px'});
           return style;
         }
       },

@@ -1,3 +1,11 @@
 .ms-grid-head-item{
   display: inline-block;
+  .ms-grid-head-item-inner{
+    padding: {
+      top: 7px;
+      bottom: 7px;
+      left: 10px;
+      right: 10px;
+    };
+  }
 }
