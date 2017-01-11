@@ -22,8 +22,17 @@ Time: 15:07-->
             },
             {
                text:'测试2',
-               dataIndex:'age',
-               flex:2
+               columns:[
+                {
+                  text:'测试2.1',
+                  dataIndex:'age'
+                },
+                {
+                  text:'测试2.2',
+                  dataIndex:'name',
+                  width:100
+                }
+               ]
             },
             {
                text:'测试3',

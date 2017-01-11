@@ -1,5 +1,12 @@
 .ms-grid-head-item{
   display: inline-block;
+  &>.ms-grid-head-group{
+    &>.ms-grid-head-item{
+      &>.ms-grid-head-item-inner{
+        text-align: center;
+      }
+    }
+  }
   .ms-grid-head-item-inner{
     padding: {
       top: 7px;

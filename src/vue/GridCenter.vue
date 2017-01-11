@@ -10,6 +10,7 @@ Time: 10:58-->
                :rest-width="restWidth"
                :flex-count="flexCount" />
     <grid-body :columns="columns"
+               :columns-list="columnsList"
                :tree-structure="treeStructure"
                :data-source="dataSource"
                :rest-width="restWidth"

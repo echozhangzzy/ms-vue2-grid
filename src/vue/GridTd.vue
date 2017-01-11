@@ -16,8 +16,9 @@ Time: 09:44-->
 </template>
 <script>
     import BaseMixin from "../mixins/BaseMixin";
+    import DataMixin from "../mixins/DataMixin";
     export default {
-      mixins:[BaseMixin],
+      mixins:[BaseMixin,DataMixin],
       computed:{
         spaces:function(){
           let me = this;
@@ -48,7 +49,7 @@ Time: 09:44-->
         customStyle:function() {
           let me = this;
           let style = {};
-          let width = me.cellWidth(me.column,me.flexCount,me.restWidth);
+          let width = me.columnWidth(me.column,me.flexCount,me.restWidth);
           Object.assign(style,{width: width +'px'});
           return style;
         }

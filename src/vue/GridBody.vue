@@ -12,6 +12,7 @@ Time: 16:42-->
             is="grid-tr"
             :tree-structure="treeStructure"
             :columns="columns"
+            :columns-list="columnsList"
             :record="record"
             :record-index="trIndex"
             :flex-count="flexCount"

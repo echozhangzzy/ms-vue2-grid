@@ -26,6 +26,12 @@ export default {
                 return [];
             }
         },
+        columnsList:{
+            type:Array,
+            default:function(){
+                return [];
+            }
+        },
         column:{
             type:Object,
             default:function(){

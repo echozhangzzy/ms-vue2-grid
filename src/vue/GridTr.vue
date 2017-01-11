@@ -6,7 +6,7 @@ Date: 2017/1/9
 Time: 13:02-->
 <template>
   <tr v-show="show">
-    <td v-for="(column,index) in columns"
+    <td v-for="(column,index) in columnsList"
         is="grid-td"
         :column-index="index"
         :column="column"

@@ -8,6 +8,7 @@ Time: 15:57-->
 <div>
   <grid-center :tree-structure="treeStructure"
                :columns="columns"
+               :columns-list="columnsArray"
                :data-source="data"
                :rest-width="restWidth"
                :flex-count="flexCount" />
@@ -15,27 +16,30 @@ Time: 15:57-->
 </template>
 <script>
     import Utils from '../utils/index.js';
+    import BaseMixin from "../mixins/BaseMixin";
+    import DataMixin from "../mixins/DataMixin";
     import GridCenter from "./GridCenter.vue";
     export default {
       name:"grid-panel",
+      mixins:[DataMixin],
       props:{
         treeStructure:{
-          type:Boolean,
-          default:function() {
-            return false;
-          }
+            type:Boolean,
+            default:function() {
+                return false;
+            }
         },
         columns:{
-          type:Array,
-          default:function(){
-            return [];
-          }
+            type:Array,
+            default:function(){
+                return [];
+            }
         },
         dataSource:{
-          type:Array,
-          default:function(){
-            return [];
-          }
+            type:Array,
+            default:function(){
+                return [];
+            }
         }
       },
       data(){
@@ -51,10 +55,16 @@ Time: 15:57-->
           }
           return me.dataSource;
         },
+        columnsArray:function(){
+          let me = this;
+          let array = me.columnsFormat(me.columns);
+          return array;
+        },
         restWidth:function(){
           let me = this;
           let widthCount = 0;
-          _.forEach(me.columns,function(column){
+          let columns = me.columnsFormat(me.columns);
+          _.forEach(columns,function(column){
                if(column.width){
                 widthCount += column.width;
                }
@@ -66,7 +76,8 @@ Time: 15:57-->
         flexCount:function(){
           let me = this;
           let flexCount = 0;
-          _.forEach(me.columns,function(column){
+          let columns = me.columnsFormat(me.columns);
+          _.forEach(columns,function(column){
             if(!column.width){
                if(column.flex){
                 flexCount += column.flex;

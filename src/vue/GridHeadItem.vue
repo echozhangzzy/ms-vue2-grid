@@ -6,11 +6,27 @@ Date: 2017/1/10
 Time: 15:25-->
 <template>
   <div class="ms-grid-head-item" :style="customStyle">
-    <div class="ms-grid-head-item-inner">{{column.text}}</div>
+    <div v-if="!columnsGroup" class="ms-grid-head-item-inner">{{column.text}}</div>
+    <div v-if="columnsGroup" class="ms-grid-head-group" :style="customStyle">
+      <div class="ms-grid-head-item" :style="width">
+        <div class="ms-grid-head-item-inner">{{column.text}}</div>
+      </div>
+      <div>
+        <grid-head-item v-for="(cc,index) in column.columns"
+                        key="index"
+                        :column="cc"
+                        :flex-count="flexCount"
+                        :rest-width="restWidth"  />
+      </div>
+    </div>
   </div>
 </template>
 <script>
+    import BaseMixin from "../mixins/BaseMixin";
+    import DataMixin from "../mixins/DataMixin";
     export default {
+      name:'grid-head-item',
+      mixins:[BaseMixin,DataMixin],
       props:{
         column:{
           type:Object
@@ -22,19 +38,36 @@ Time: 15:25-->
           type:Number
         }
       },
+      data(){
+        return {
+          groupWidth:0
+        };
+      },
       computed:{
+        columnsGroup:function() {
+          let me = this;
+          if(me.column.columns && me.column.columns.length>0){
+            return true;
+          }
+          return false;
+        },
         customStyle:function(){
           let me = this;
           let style = {};
-          let minWidth = 80;
-          let width = minWidth;
-          if(me.column.width){
-            minWidth = (me.column.width>minWidth)?me.column.width:minWidth;
+          let width = 0;
+          if(!me.columnsGroup){
+            width = me.columnWidth(me.column,me.flexCount,me.restWidth);
           }else {
-            width = (me.column.flex/me.flexCount)*me.restWidth;
-            width = (width>minWidth)?width:minWidth;
+            width = me.columnsGroupWidth(me.column,me.flexCount,me.restWidth);
           }
+          me.groupWidth = width;
           Object.assign(style,{width: width +'px'});
+          return style;
+        },
+        width:function(){
+          let me = this;
+          let style = {};
+          Object.assign(style,{width: me.groupWidth +'px'});
           return style;
         }
       },
