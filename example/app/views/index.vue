@@ -6,11 +6,13 @@ Date: 2016/12/6
 Time: 15:07-->
 <template>
   <div style="width:1000px;">
+    <my-button/>
     <grid-panel :columns="columns" :tree-structure=false :data-source="dataSource"/>
   </div>
 </template>
 <script>
     import {GridPanel} from "../../../src/index";
+    import MyButton from "./MyButton.vue";
     export default {
       data(){
         return {
@@ -37,7 +39,10 @@ Time: 15:07-->
             {
                text:'测试3',
                dataIndex:'age',
-               width:100
+               width:100,
+               render:function(){
+                return '<my-button />';
+               }
             }
           ],
           dataSource:[
@@ -69,7 +74,8 @@ Time: 15:07-->
         }
       },
       components: {
-        GridPanel
+        GridPanel,
+        MyButton
       }
     }
 </script>

@@ -11,7 +11,7 @@ Time: 09:44-->
       <span v-if="!record._expanded">+</span>
       <span v-if="record._expanded">-</span>
     </button>
-    {{record[column.dataIndex]}}
+    <div v-html="render()"></div>
   </td>
 </template>
 <script>
@@ -58,6 +58,13 @@ Time: 09:44-->
         toggle: function() {
           let me = this;
           me.$emit('toggle',me.index);
+        },
+        render:function() {
+          let me = this;
+          if(me.column.render){
+            return me.column.render();
+          }
+          return me.record[me.column.dataIndex];
         }
       },
       components: {
