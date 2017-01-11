@@ -7,7 +7,11 @@ Time: 13:02-->
 <template>
   <tr v-show="show">
     <td v-for="(column,index) in columns"
-        is="grid-td" :column-index="index" :column="column" :record="record" :flex-count="flexCount"
+        is="grid-td"
+        :column-index="index"
+        :column="column"
+        :record="record"
+        :flex-count="flexCount"
         :rest-width="restWidth" >
     </td>
   </tr>

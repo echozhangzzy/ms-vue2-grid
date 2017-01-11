@@ -6,20 +6,16 @@ Date: 2017/1/5
 Time: 15:57-->
 <template>
 <div>
-  <grid-head :columns="columns"
-             :rest-width="restWidth"
-             :flex-count="flexCount" />
-  <grid-body :columns="columns"
-             :tree-structure="treeStructure"
-             :data-source="data"
-             :rest-width="restWidth"
-             :flex-count="flexCount" />
+  <grid-center :tree-structure="treeStructure"
+               :columns="columns"
+               :data-source="data"
+               :rest-width="restWidth"
+               :flex-count="flexCount" />
 </div>
 </template>
 <script>
     import Utils from '../utils/index.js';
-    import GridHead from "./GridHead.vue";
-    import GridBody from "./GridBody.vue";
+    import GridCenter from "./GridCenter.vue";
     export default {
       name:"grid-panel",
       props:{
@@ -79,7 +75,6 @@ Time: 15:57-->
                }
             }
           });
-          console.log(flexCount);
           return flexCount;
         }
       },
@@ -94,8 +89,7 @@ Time: 15:57-->
         }
       },
       components: {
-        GridHead,
-        GridBody
+        GridCenter
       }
     }
 </script>
